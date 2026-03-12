@@ -27,32 +27,38 @@ const features = [
     icon: LayoutDashboard,
     title: 'Kanban & Scrum Boards',
     description: 'Flexible boards that adapt to your workflow',
+    href: '/features/kanban-scrum',
   },
   {
     icon: Calendar,
     title: 'Sprint Planning',
     description: 'AI-powered sprint intelligence and predictions',
+    href: '/features/sprint-planning',
   },
   {
     icon: Workflow,
     title: 'Smart Automation',
     description: 'Automate repetitive tasks with powerful rules',
+    href: '/features/automation',
   },
   {
     icon: ScanSearch,
     title: 'AI Duplicate Detection',
     description:
       "Automatically flags duplicate issues the moment they're created — before they waste your team's time",
+    href: '/features/ai-duplicate-detection',
   },
   {
     icon: Github,
     title: 'GitHub Integration',
     description: 'Seamless dev workflow with PR and commit tracking',
+    href: '/features/github-integration',
   },
   {
     icon: Shield,
     title: 'Enterprise Security',
     description: 'SAML SSO, RBAC, and audit trails',
+    href: '/features/enterprise-security',
   },
 ]
 

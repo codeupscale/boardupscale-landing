@@ -17,9 +17,9 @@ export function Footer() {
             <Link href="/pricing" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">
               Pricing
             </Link>
-            <a href="/#features" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">
+            <Link href="/features" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">
               Features
-            </a>
+            </Link>
             <a
               href="https://github.com/codeupscale/boardupscale"
               target="_blank"

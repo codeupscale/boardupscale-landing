@@ -15,9 +15,9 @@ export function Nav() {
             <span className="font-bold text-xl text-gray-900 tracking-tight">Boardupscale</span>
           </Link>
           <div className="hidden md:flex items-center gap-8">
-            <a href="/#features" className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">
+            <Link href="/features" className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">
               Features
-            </a>
+            </Link>
             <Link href="/pricing" className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">
               Pricing
             </Link>
