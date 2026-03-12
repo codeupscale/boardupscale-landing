@@ -12,6 +12,10 @@ import {
   ScanSearch,
   Sparkles,
   GitMerge,
+  Code2,
+  Server,
+  Unlock,
+  Star,
 } from 'lucide-react'
 import { Nav } from './components/Nav'
 import { Footer } from './components/Footer'
@@ -154,6 +158,21 @@ export default function Home() {
             >
               See Pricing
             </a>
+          </div>
+
+          {/* Trust bar */}
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+            {[
+              { icon: Code2, label: 'MIT Licensed' },
+              { icon: Server, label: 'Self-hostable' },
+              { icon: Unlock, label: 'No vendor lock-in' },
+              { icon: Star, label: 'Free forever plan' },
+            ].map(({ icon: Icon, label }) => (
+              <div key={label} className="flex items-center gap-1.5 text-sm text-gray-500">
+                <Icon className="h-4 w-4 text-green-500" />
+                {label}
+              </div>
+            ))}
           </div>
 
           {/* Hero visual */}
@@ -330,6 +349,81 @@ export default function Home() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Free & Open Source */}
+      <section className="py-24 bg-gray-950">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-sm font-medium mb-6">
+              <Code2 className="h-3.5 w-3.5" />
+              Free &amp; Open Source
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+              Own your tools.{' '}
+              <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
+                Own your data.
+              </span>
+            </h2>
+            <p className="mt-5 text-lg text-gray-400 leading-relaxed">
+              Boardupscale is MIT-licensed and built in the open. Use the hosted version for free,
+              or deploy it on your own infrastructure — no per-seat fees, no lock-in, no surprises.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+            {[
+              {
+                icon: Code2,
+                title: 'MIT Licensed',
+                description:
+                  'The full source code is on GitHub. Read it, fork it, modify it, and contribute back. No proprietary black boxes.',
+              },
+              {
+                icon: Server,
+                title: 'Self-hostable',
+                description:
+                  'Run Boardupscale on your own servers with Docker Compose or Kubernetes. Full control over where your data lives.',
+              },
+              {
+                icon: Unlock,
+                title: 'No lock-in',
+                description:
+                  'Export all your data at any time as CSV or JSON. Move to a self-hosted instance or migrate whenever you want.',
+              },
+            ].map(({ icon: Icon, title, description }) => (
+              <div
+                key={title}
+                className="bg-gray-900 rounded-xl border border-gray-800 p-6 hover:border-green-500/30 transition-colors"
+              >
+                <div className="h-10 w-10 rounded-lg bg-green-500/10 flex items-center justify-center mb-4">
+                  <Icon className="h-5 w-5 text-green-400" />
+                </div>
+                <h3 className="text-base font-semibold text-white mb-2">{title}</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">{description}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="https://github.com/codeupscale/boardupscale"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center h-11 px-6 text-sm font-semibold text-white bg-gray-800 border border-gray-700 rounded-xl hover:bg-gray-700 transition-colors gap-2"
+            >
+              <Github className="h-4 w-4" />
+              View on GitHub
+            </a>
+            <a
+              href={`${APP_URL}/register`}
+              className="inline-flex items-center justify-center h-11 px-6 text-sm font-semibold text-gray-900 bg-green-400 rounded-xl hover:bg-green-300 transition-colors gap-2"
+            >
+              Start for free
+              <ArrowRight className="h-4 w-4" />
+            </a>
           </div>
         </div>
       </section>
