@@ -3,6 +3,30 @@ import Link from 'next/link'
 import { ScanSearch, ArrowRight, ChevronRight, CheckCircle2, Sparkles, GitMerge, Brain, Clock } from 'lucide-react'
 import { Nav } from '../../components/Nav'
 import { Footer } from '../../components/Footer'
+import { FAQ, FAQSchema, type FAQItem } from '../../components/FAQ'
+
+const faqs: FAQItem[] = [
+  {
+    q: 'How does semantic scanning differ from keyword matching?',
+    a: 'Keyword matching only finds duplicates when titles share the same words. Semantic scanning understands the meaning behind the text — so it catches duplicates even when they are worded completely differently, like "Login button broken" and "Sign-in CTA not working."',
+  },
+  {
+    q: 'What happens to comments and attachments when I merge issues?',
+    a: 'When you merge a duplicate into the existing issue, all comments, attachments, and votes transfer automatically. The merged issue is closed with a link to the original, preserving a full audit trail.',
+  },
+  {
+    q: 'Can I run duplicate detection on an existing backlog?',
+    a: 'Yes. The bulk duplicate review mode scans your entire backlog and surfaces clusters of similar issues. You can review and merge them in batch — ideal for cleaning up legacy projects.',
+  },
+  {
+    q: 'How does the model learn from my team\'s decisions?',
+    a: 'Every time your team confirms or dismisses a duplicate suggestion, that signal is used to fine-tune the similarity model for your project\'s specific language and conventions. Detection accuracy improves over time.',
+  },
+  {
+    q: 'Can I access duplicate detection via the API?',
+    a: 'Yes. The duplicate detection endpoint is available in the REST API. You can submit an issue title and get back a list of similar issues with confidence scores — useful for integrations and automated workflows.',
+  },
+]
 
 export const metadata: Metadata = {
   title: 'AI Duplicate Detection',
@@ -169,6 +193,15 @@ export default function AiDuplicateDetectionPage() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-gray-900 tracking-tight mb-8">Frequently asked questions</h2>
+          <FAQ items={faqs} />
+          <FAQSchema items={faqs} />
         </div>
       </section>
 

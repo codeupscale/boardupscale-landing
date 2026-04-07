@@ -3,6 +3,30 @@ import Link from 'next/link'
 import { Calendar, ArrowRight, ChevronRight, CheckCircle2, TrendingUp, BarChart2, Flame, Brain } from 'lucide-react'
 import { Nav } from '../../components/Nav'
 import { Footer } from '../../components/Footer'
+import { FAQ, FAQSchema, type FAQItem } from '../../components/FAQ'
+
+const faqs: FAQItem[] = [
+  {
+    q: 'How does the AI predict sprint velocity?',
+    a: 'The AI analyses your team\'s historical velocity data across past sprints — completed story points, carry-over rates, and team capacity — to forecast how much work the team can realistically complete in the upcoming sprint.',
+  },
+  {
+    q: 'What is the difference between cycle time and lead time?',
+    a: 'Cycle time measures how long an issue takes from when work starts (e.g. moved to In Progress) to when it\'s done. Lead time measures the total time from when an issue is created to when it\'s completed — including time spent in the backlog.',
+  },
+  {
+    q: 'Can I export sprint reports?',
+    a: 'Yes. Sprint reports can be exported as PDF for stakeholders or as CSV/JSON for further analysis. Reports include completed work, carried-over issues, velocity trends, and team throughput metrics.',
+  },
+  {
+    q: 'How are carried-over issues handled between sprints?',
+    a: 'Issues not completed in a sprint are automatically flagged as carry-overs. You can choose to move them to the next sprint or return them to the backlog. Carry-over tracking is included in sprint reports so the team can identify recurring patterns.',
+  },
+  {
+    q: 'Does the burndown chart update in real time?',
+    a: 'Yes. The burndown chart updates live as issues are completed or their estimates change. The ideal burn line is calculated from the sprint goal so you can see at a glance whether the team is ahead or behind.',
+  },
+]
 
 export const metadata: Metadata = {
   title: 'Sprint Planning',
@@ -180,6 +204,15 @@ export default function SprintPlanningPage() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-gray-900 tracking-tight mb-8">Frequently asked questions</h2>
+          <FAQ items={faqs} />
+          <FAQSchema items={faqs} />
         </div>
       </section>
 

@@ -2,9 +2,10 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { Check, X, ChevronDown, ChevronUp, ArrowRight } from 'lucide-react'
+import { Check, X, ArrowRight } from 'lucide-react'
 import { Nav } from '../components/Nav'
 import { Footer } from '../components/Footer'
+import { FAQ, FAQSchema, type FAQItem } from '../components/FAQ'
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://app.boardupscale.com'
 
@@ -60,7 +61,7 @@ const plans = [
       'Webhook integrations',
       'Dedicated support & SLA',
     ],
-    cta: 'Contact Sales',
+    cta: 'Talk to Us',
     popular: false,
   },
 ]
@@ -142,7 +143,6 @@ const faqs = [
 
 export default function PricingPage() {
   const [isYearly, setIsYearly] = useState(false)
-  const [openFaq, setOpenFaq] = useState<number | null>(null)
 
   return (
     <div className="min-h-screen bg-white">
@@ -191,7 +191,7 @@ export default function PricingPage() {
               const price = isYearly ? plan.yearlyPrice : plan.monthlyPrice
               const period = isYearly ? '/user/yr' : '/user/mo'
               const displayPeriod = plan.slug === 'free' ? '' : period
-              const href = plan.slug === 'enterprise' ? '#contact' : `${APP_URL}/register`
+              const href = plan.slug === 'enterprise' ? 'mailto:sales@boardupscale.com' : `${APP_URL}/register`
 
               return (
                 <div
@@ -321,35 +321,8 @@ export default function PricingPage() {
               Frequently asked questions
             </h2>
           </div>
-
-          <div className="space-y-4">
-            {faqs.map((faq, index) => {
-              const isOpen = openFaq === index
-              return (
-                <div
-                  key={index}
-                  className="border border-gray-200 rounded-xl overflow-hidden"
-                >
-                  <button
-                    onClick={() => setOpenFaq(isOpen ? null : index)}
-                    className="w-full flex items-center justify-between p-5 text-left hover:bg-gray-50 transition-colors"
-                  >
-                    <span className="text-sm font-medium text-gray-900">{faq.q}</span>
-                    {isOpen ? (
-                      <ChevronUp className="h-4 w-4 text-gray-500 flex-shrink-0 ml-4" />
-                    ) : (
-                      <ChevronDown className="h-4 w-4 text-gray-500 flex-shrink-0 ml-4" />
-                    )}
-                  </button>
-                  {isOpen && (
-                    <div className="px-5 pb-5">
-                      <p className="text-sm text-gray-600 leading-relaxed">{faq.a}</p>
-                    </div>
-                  )}
-                </div>
-              )
-            })}
-          </div>
+          <FAQ items={faqs} />
+          <FAQSchema items={faqs} />
         </div>
       </section>
 

@@ -3,6 +3,30 @@ import Link from 'next/link'
 import { Workflow, ArrowRight, ChevronRight, CheckCircle2, Zap, Bell, GitBranch, Repeat2 } from 'lucide-react'
 import { Nav } from '../../components/Nav'
 import { Footer } from '../../components/Footer'
+import { FAQ, FAQSchema, type FAQItem } from '../../components/FAQ'
+
+const faqs: FAQItem[] = [
+  {
+    q: 'What events can trigger an automation rule?',
+    a: 'Rules can be triggered when issues are created, updated, transitioned between statuses, commented on, or assigned. Sprint events (started, ended) and scheduled cron triggers are also supported.',
+  },
+  {
+    q: 'Can one trigger fire multiple actions in sequence?',
+    a: 'Yes. A single trigger can kick off a chain of actions — for example, change the status, assign a user, add a label, send a notification, and fire a webhook, all in one rule execution.',
+  },
+  {
+    q: 'How do I add conditional logic to a rule?',
+    a: 'The visual rule builder supports if/else conditions. You can scope rules to specific projects, priorities, labels, assignees, or issue types. For example, "If priority is Critical AND label is bug, then assign to on-call engineer."',
+  },
+  {
+    q: 'Can I schedule rules to run at specific times?',
+    a: 'Yes. Cron-based scheduled rules let you run automations on a recurring schedule — for example, a daily rule that sends reminders for stale issues or a weekly rule that archives completed sprints.',
+  },
+  {
+    q: 'Is there a way to test a rule before enabling it?',
+    a: 'Yes. The automation run history shows pass/fail logs for every rule execution, including the trigger event, conditions evaluated, and actions taken. You can also clone rules to experiment without affecting production workflows.',
+  },
+]
 
 export const metadata: Metadata = {
   title: 'Smart Automation',
@@ -163,6 +187,15 @@ export default function AutomationPage() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-gray-900 tracking-tight mb-8">Frequently asked questions</h2>
+          <FAQ items={faqs} />
+          <FAQSchema items={faqs} />
         </div>
       </section>
 

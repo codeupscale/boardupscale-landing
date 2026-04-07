@@ -3,6 +3,30 @@ import Link from 'next/link'
 import { LayoutDashboard, ArrowRight, ChevronRight, CheckCircle2, Columns2, Layers, SlidersHorizontal } from 'lucide-react'
 import { Nav } from '../../components/Nav'
 import { Footer } from '../../components/Footer'
+import { FAQ, FAQSchema, type FAQItem } from '../../components/FAQ'
+
+const faqs: FAQItem[] = [
+  {
+    q: 'Can I switch between Kanban and Scrum on the same project?',
+    a: 'Yes. Every project supports both Kanban and Scrum views. You can toggle between a continuous Kanban flow and sprint-driven Scrum boards at any time without migrating data or losing history.',
+  },
+  {
+    q: 'Do boards update in real time for all team members?',
+    a: 'Yes. Boardupscale uses WebSockets to push changes instantly. When someone moves a card, changes a status, or adds a comment, every team member sees the update immediately without refreshing.',
+  },
+  {
+    q: 'What happens when someone exceeds a WIP limit?',
+    a: 'The column is highlighted visually to indicate an overload. Team members can still move cards into the column, but the warning makes bottlenecks impossible to miss so the team can rebalance work.',
+  },
+  {
+    q: 'Can I create multiple board views for the same project?',
+    a: 'Yes. You can create multiple board views with different filters, column configurations, and swimlane groupings. Each view is saved and accessible from the project sidebar.',
+  },
+  {
+    q: 'How do swimlanes work?',
+    a: 'Swimlanes group cards into horizontal rows on the board. You can group by assignee, priority, epic, or any custom field. This lets you see work distribution across your team or track progress by category at a glance.',
+  },
+]
 
 export const metadata: Metadata = {
   title: 'Kanban & Scrum Boards',
@@ -180,6 +204,15 @@ export default function KanbanScrumPage() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-gray-900 tracking-tight mb-8">Frequently asked questions</h2>
+          <FAQ items={faqs} />
+          <FAQSchema items={faqs} />
         </div>
       </section>
 

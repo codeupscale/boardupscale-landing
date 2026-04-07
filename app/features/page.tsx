@@ -12,6 +12,26 @@ import {
 } from 'lucide-react'
 import { Nav } from '../components/Nav'
 import { Footer } from '../components/Footer'
+import { FAQ, FAQSchema, type FAQItem } from '../components/FAQ'
+
+const faqs: FAQItem[] = [
+  {
+    q: 'Which features are included in the free plan?',
+    a: 'The free plan includes Kanban and Scrum boards, sprint planning, basic reporting, burndown and velocity charts, two-factor authentication, and REST API access for up to 5 users with 1 GB of storage.',
+  },
+  {
+    q: 'Can I use Boardupscale for both Kanban and Scrum?',
+    a: 'Yes. Every project supports both Kanban and Scrum workflows. You can switch between a continuous Kanban flow and sprint-driven Scrum boards without migrating data or changing tools.',
+  },
+  {
+    q: 'Do all features work with the self-hosted version?',
+    a: 'Yes. The self-hosted version includes every feature available in the cloud version. You deploy with Docker Compose or Kubernetes and get full control over your data and infrastructure.',
+  },
+  {
+    q: 'How do the AI features work?',
+    a: 'Boardupscale uses semantic AI models to power duplicate detection and sprint velocity predictions. Duplicate detection scans your backlog in real time as you type and surfaces similar issues with confidence scores. Sprint predictions analyse historical velocity to forecast whether a sprint is on track.',
+  },
+]
 
 export const metadata: Metadata = {
   title: 'Features',
@@ -134,6 +154,15 @@ export default function FeaturesPage() {
               )
             })}
           </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-gray-900 tracking-tight mb-8">Frequently asked questions</h2>
+          <FAQ items={faqs} />
+          <FAQSchema items={faqs} />
         </div>
       </section>
 

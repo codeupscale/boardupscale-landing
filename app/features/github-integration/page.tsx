@@ -3,6 +3,30 @@ import Link from 'next/link'
 import { Github, ArrowRight, ChevronRight, CheckCircle2, GitPullRequest, GitCommit, GitBranch, Webhook } from 'lucide-react'
 import { Nav } from '../../components/Nav'
 import { Footer } from '../../components/Footer'
+import { FAQ, FAQSchema, type FAQItem } from '../../components/FAQ'
+
+const faqs: FAQItem[] = [
+  {
+    q: 'How do I link a pull request to an issue?',
+    a: 'Include the issue key (e.g. BS-123) in your PR title or description. Boardupscale automatically detects the reference and links the PR to the issue. The PR status (open, merged, closed) syncs in real time.',
+  },
+  {
+    q: 'What happens to the issue when a PR is merged?',
+    a: 'You can configure auto-transition rules per project. For example, merging a PR can automatically move the linked issue from "In Review" to "Done." Transition rules are fully customisable.',
+  },
+  {
+    q: 'Does it work with GitHub Enterprise?',
+    a: 'Yes. Boardupscale supports both GitHub.com and GitHub Enterprise Server. The integration uses a secure GitHub App installation — no personal access tokens are stored.',
+  },
+  {
+    q: 'How are mono-repos handled?',
+    a: 'Mono-repos are fully supported. A single PR can reference multiple issue keys, and each issue will be linked independently. This works regardless of which directory or package the changes are in.',
+  },
+  {
+    q: 'What CI/CD information is displayed on issues?',
+    a: 'CI/CD status badges (passing, failing, pending) from GitHub Actions or any CI provider that reports status checks are displayed directly on the issue card, so the team can see build health without leaving the board.',
+  },
+]
 
 export const metadata: Metadata = {
   title: 'GitHub Integration',
@@ -177,6 +201,15 @@ export default function GithubIntegrationPage() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-gray-900 tracking-tight mb-8">Frequently asked questions</h2>
+          <FAQ items={faqs} />
+          <FAQSchema items={faqs} />
         </div>
       </section>
 

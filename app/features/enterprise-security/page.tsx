@@ -3,6 +3,30 @@ import Link from 'next/link'
 import { Shield, ArrowRight, ChevronRight, CheckCircle2, Lock, Users, ScrollText, Fingerprint } from 'lucide-react'
 import { Nav } from '../../components/Nav'
 import { Footer } from '../../components/Footer'
+import { FAQ, FAQSchema, type FAQItem } from '../../components/FAQ'
+
+const faqs: FAQItem[] = [
+  {
+    q: 'Which identity providers are supported for SAML SSO?',
+    a: 'Boardupscale supports any SAML 2.0 compliant identity provider, including Okta, Azure Active Directory, Google Workspace, OneLogin, and PingIdentity. SSO can be enforced for the entire organisation with a single toggle.',
+  },
+  {
+    q: 'Can I create custom roles beyond the built-in ones?',
+    a: 'Yes. In addition to the four built-in roles (Admin, Manager, Member, Viewer), Enterprise plans support fully custom roles. You can set permissions at the organisation, project, board, and individual issue level.',
+  },
+  {
+    q: 'How long are audit logs retained?',
+    a: 'Audit logs are retained for 2 years on Enterprise plans. Every action is logged with a timestamp, user, IP address, and before/after state. Logs are immutable and cannot be modified or deleted.',
+  },
+  {
+    q: 'How is data encrypted at rest and in transit?',
+    a: 'All data in transit is encrypted with TLS 1.3. Data at rest is encrypted with AES-256. Passwords are hashed with bcrypt, and JWT access tokens expire after 15 minutes to minimise the window of exposure.',
+  },
+  {
+    q: 'Can I restrict access to specific IP ranges?',
+    a: 'Yes. IP allowlisting lets you restrict access to your corporate network or VPN. Any login attempt from an IP outside the allowlist is blocked. This is available on Enterprise plans.',
+  },
+]
 
 export const metadata: Metadata = {
   title: 'Enterprise Security',
@@ -182,6 +206,15 @@ export default function EnterpriseSecurityPage() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-gray-900 tracking-tight mb-8">Frequently asked questions</h2>
+          <FAQ items={faqs} />
+          <FAQSchema items={faqs} />
         </div>
       </section>
 
