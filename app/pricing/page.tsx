@@ -29,8 +29,8 @@ const plans = [
   {
     name: 'Pro',
     slug: 'pro',
-    monthlyPrice: 7,
-    yearlyPrice: 70,
+    monthlyPrice: 3,
+    yearlyPrice: 30,
     description: 'For growing teams that need more power',
     highlights: [
       'Up to 25 users',
@@ -48,8 +48,8 @@ const plans = [
   {
     name: 'Enterprise',
     slug: 'enterprise',
-    monthlyPrice: 15,
-    yearlyPrice: 150,
+    monthlyPrice: null,
+    yearlyPrice: null,
     description: 'For organizations that need full control',
     highlights: [
       'Unlimited users',
@@ -214,14 +214,20 @@ export default function PricingPage() {
                   </div>
 
                   <div className="mb-8">
-                    <span className="text-5xl font-bold text-gray-900">${price}</span>
-                    {displayPeriod && (
-                      <span className="text-gray-500 text-sm ml-1">{displayPeriod}</span>
-                    )}
-                    {isYearly && plan.slug !== 'free' && (
-                      <p className="text-xs text-gray-400 mt-1">
-                        ${Math.round(price / 12)}/mo billed annually
-                      </p>
+                    {price !== null ? (
+                      <>
+                        <span className="text-5xl font-bold text-gray-900">${price}</span>
+                        {displayPeriod && (
+                          <span className="text-gray-500 text-sm ml-1">{displayPeriod}</span>
+                        )}
+                        {isYearly && plan.slug !== 'free' && (
+                          <p className="text-xs text-gray-400 mt-1">
+                            ${Math.round(price / 12)}/mo billed annually
+                          </p>
+                        )}
+                      </>
+                    ) : (
+                      <span className="text-4xl font-bold text-gray-900">Contact Us</span>
                     )}
                   </div>
 
